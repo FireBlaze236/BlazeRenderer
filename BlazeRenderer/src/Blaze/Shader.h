@@ -41,5 +41,11 @@ public: //Uniform functions
 	//void SetUniform3fv(const std::string& name, float* fv);
 	//void SetUniform4fv(const std::string& name, float* fv);
 
+	//Matrix
+	//void SetUniformMatrix4f(const std::string& name, const void* mat);
+
+
+	//GLM Matrix
+	void SetUniformMatrix4f(const std::string& name, glm::mat4& mat);
 };
 

@@ -25,6 +25,25 @@ void Renderer::Draw(const VertexArray& va, const ElementBuffer& eb, const Shader
 	shader.Bind();
 	va.Bind();
 	eb.Bind();
-	
+
+
 	GLCall(glDrawElements(GL_TRIANGLES, eb.GetCount(), GL_UNSIGNED_INT, nullptr));
 }
+
+void Renderer::SetDrawMode(DrawMode drawMode)
+{
+	switch (drawMode)
+	{
+	case DrawMode::FILL_TWO_SIDED:
+		GLCall(glPolygonMode(GL_FRONT_AND_BACK, GL_FILL));
+		break;
+	case DrawMode::WIRE_TWO_SIDED:
+		GLCall(glPolygonMode(GL_FRONT_AND_BACK, GL_LINE));
+		break;
+	case DrawMode::WIRE_FRONT:
+		GLCall(glPolygonMode(GL_FRONT, GL_LINE));
+		break;
+	}
+}
+
+

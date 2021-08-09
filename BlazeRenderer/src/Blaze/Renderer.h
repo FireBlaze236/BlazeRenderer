@@ -2,6 +2,9 @@
 #include "VertexArray.h"
 #include "Shader.h"
 
+enum class DrawMode {
+	FILL_TWO_SIDED, WIRE_TWO_SIDED, WIRE_FRONT
+};
 
 class Renderer
 {
@@ -13,5 +16,7 @@ public:
 	void Clear();
 	void ClearWithColor(float r, float g, float b, float a);
 	void Draw(const VertexArray& va, const ElementBuffer& eb, const Shader& shader);
+
+	void SetDrawMode(DrawMode drawMode);
 };
 
