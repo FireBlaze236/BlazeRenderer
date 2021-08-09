@@ -23,8 +23,7 @@ Window::Window()
 	MakeCurrent();
 }
 
-Window::Window(int width = 640, int height = 480, const char* title = "Window",
-	bool resizable = true, bool fullscreen = false, bool core = false,
+Window::Window(int width = 640, int height = 480, const char* title = "Window", bool fullscreen = false, bool core = false,
 	int majVersion = 3, int minVersion = 3)
 {
 	if (!glfwInit())
@@ -33,34 +32,23 @@ Window::Window(int width = 640, int height = 480, const char* title = "Window",
 		ASSERT(false);
 	}
 
-	//CREATE VERSION
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, majVersion);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, minVersion);
-
 	//IF CORE
 	if (core)
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	else
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE);
 
-	//
 
+	//CREATE VERSION
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, majVersion);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, minVersion);
 
+	
 	//IF FULLSCREEM
 	if (fullscreen)
 		m_Window = glfwCreateWindow(width, height, title, glfwGetPrimaryMonitor(), NULL);
 	else
 	{
-		//RESIZABLE
-		if (resizable)
-		{
-			glfwWindowHint(GLFW_RESIZABLE, resizable ? GLFW_TRUE : GLFW_FALSE);
-			glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
-				{
-					glfwSetWindowSize(window, width, height);
-				}
-			);
-		}
 		m_Window = glfwCreateWindow(width, height, title, NULL, NULL);
 	}
 		
@@ -103,6 +91,15 @@ void Window::SwapBuffers()
 {
 	glfwSwapBuffers(m_Window);
 }
+
+void Window::AttachResizeCallback(GLFWwindowsizefun func)
+{
+	glfwSetWindowSizeCallback(m_Window, func);
+}
+
+
+
+
 
 
 

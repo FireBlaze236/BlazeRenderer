@@ -14,12 +14,12 @@ VertexArray::~VertexArray()
 	GLCall(glDeleteVertexArrays(1, &m_RendererID));
 }
 
-void VertexArray::Bind()
+void VertexArray::Bind() const
 {
 	GLCall(glBindVertexArray(m_RendererID));
 }
 
-void VertexArray::Unbind()
+void VertexArray::Unbind() const
 {
 	GLCall(glBindVertexArray(0));
 }
@@ -40,10 +40,14 @@ void VertexArray::AddBuffer(const VertexBuffer& vb, const VertexBufferLayout& la
 
 		offset += element.count * VertexBufferElement::GetSizeOfType(element.type);
 	}
+
+	Unbind();
 }
 
 void VertexArray::AddElementBuffer(const ElementBuffer& eb)
 {
 	Bind();
 	eb.Bind();
+
+	Unbind();
 }

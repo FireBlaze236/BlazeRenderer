@@ -151,6 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Blaze\Shader.h" />
+    <ClInclude Include="src\Blaze\Renderer.h" />
     <ClInclude Include="src\Blaze\ElementBuffer.h" />
     <ClInclude Include="src\Blaze\Logger.h" />
     <ClInclude Include="src\Blaze\VertexBufferLayout.h" />
@@ -443,6 +445,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Dependencies\glad\src\glad.c" />
+    <ClCompile Include="src\Blaze\Shader.cpp" />
+    <ClCompile Include="src\Blaze\Renderer.cpp" />
     <ClCompile Include="src\Blaze\ElementBuffer.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\vendor\glm\detail\glm.cpp" />
@@ -452,6 +456,7 @@
     <ClCompile Include="src\Blaze\VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\shaders\defaultShader.shader" />
     <None Include="src\vendor\glm\detail\func_common.inl" />
     <None Include="src\vendor\glm\detail\func_common_simd.inl" />
     <None Include="src\vendor\glm\detail\func_exponential.inl" />

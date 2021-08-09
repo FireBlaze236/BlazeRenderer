@@ -1,0 +1,45 @@
+#pragma once
+#include <string>
+#include <unordered_map>
+#include "glm/glm.hpp"
+
+struct ShaderProgramSource {
+	std::string VertexSource;
+	std::string FragmentSource;
+};
+
+class Shader
+{
+private:
+	std::string m_Filepath;
+	unsigned int m_RendererID;
+	std::unordered_map<std::string, unsigned int> m_UniformMap;
+
+public:
+	Shader(std::string& shaderFilePath);
+	~Shader();
+
+	void Bind() const;
+	void Unbind() const;
+
+private:
+	ShaderProgramSource ParseShader(const std::string& filePath);
+	unsigned int CreateShaderProgram(const ShaderProgramSource& shaderSource);
+	unsigned int CompileShader(unsigned int type, const std::string& source);
+
+	int GetUniformLocation(const std::string& name);
+
+public: //Uniform functions
+	//Floats
+	void SetUniform1f(const std::string& name, float f);
+	void SetUniform2f(const std::string& name, float v0, float v1);
+	void SetUniform3f(const std::string& name, float v0, float v1, float v2);
+	void SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3);
+
+	//Float Vectors
+	//void SetUniform2fv(const std::string& name, float* fv);
+	//void SetUniform3fv(const std::string& name, float* fv);
+	//void SetUniform4fv(const std::string& name, float* fv);
+
+};
+

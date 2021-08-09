@@ -10,7 +10,7 @@ private:
 
 public:
 	Window();
-	Window(int width, int height, const char* title, bool resizable, bool fs, bool core, int vMaj, int vMin);
+	Window(int width, int height, const char* title, bool fs, bool core, int vMaj, int vMin);
 	~Window();
 
 	void MakeCurrent();
@@ -18,5 +18,8 @@ public:
 
 	void PollEvents();
 	void SwapBuffers();
+
+	void AttachResizeCallback(GLFWwindowsizefun func);
+
 };
 

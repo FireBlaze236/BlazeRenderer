@@ -3,8 +3,7 @@
 
 #include "Blaze/Logger.h"
 #include "Blaze/Window.h"
-#include "Blaze/VertexArray.h"
-
+#include "Blaze/Renderer.h"
 
 
 void GLClearError() {
@@ -25,7 +24,7 @@ bool GLLogCall(const char* function, const char* file, int line) {
 
 int main()
 {
-	Window* win = new Window();
+	Window* win = new Window(800, 600, "BlazeRenderer", false, true, 3, 3);
 
 	gladLoadGL();
 	
@@ -38,6 +37,11 @@ int main()
 	unsigned int indices[] = {
 		0, 1, 2
 	};
+
+	//Shaders
+
+	std::string s = "res/shaders/defaultShader.shader";
+	Shader shader(s);
 
 	//Vertex Arrays
 	VertexArray vertexArray;
@@ -60,17 +64,23 @@ int main()
 	//Add element buffer
 	vertexArray.AddElementBuffer(elementBuffer);
 
+
+	Renderer renderer;
 	
-
-
-	GLCall(glClearColor(0.5f, 0.3f, 0.3f, 1.0f));
+	
+	
+	
 
 	while (!win->isClosing())
 	{
-		GLCall(glClear(GL_COLOR_BUFFER_BIT));
-		vertexArray.Bind();
-		GLCall(glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr));
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		renderer.Clear();
+
+		shader.Bind();
+		shader.SetUniform4f("aColor", 0.1f, std::sin(glfwGetTime()), 0.4f, 1.0f);
+
+		renderer.Draw(vertexArray, elementBuffer, shader);
+
+		
 
 		win->PollEvents();
 		win->SwapBuffers();
@@ -78,4 +88,10 @@ int main()
 
 	//CLEAN UP
 	delete win;
+}
+
+
+void ResizeWindowCallback(GLFWwindow* window, int width, int height)
+{
+	glViewport(0, 0, width, height);
 }
