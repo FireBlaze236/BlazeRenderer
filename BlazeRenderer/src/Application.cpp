@@ -4,6 +4,7 @@
 #include "Blaze/Logger.h"
 #include "Blaze/Window.h"
 #include "Blaze/Renderer.h"
+#include "Blaze/Texture.h"
 
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
@@ -33,15 +34,47 @@ int main()
 	gladLoadGL();
 	
 	float vertices[] = {
-		-0.5f,  0.5f, 0.5f,
-		 0.5f,  0.5f, 0.5f,
-		 0.5f, -0.5f, 0.5f,
-		-0.5f, -0.5f, 0.5f,
+		 -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+	 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
+	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
 
-		-0.5f,  0.5f, -0.5f,
-		 0.5f,  0.5f, -0.5f,
-		 0.5f, -0.5f, -0.5f,
-		-0.5f, -0.5f, -0.5f
+	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+	 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+	 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+	-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
+	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+
+	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	 0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
+	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+
+	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
+	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
 	};
 
 	unsigned int indices[] = {
@@ -74,7 +107,7 @@ int main()
 
 	glm::mat4 view = glm::mat4(1.0f);
 	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -5.0f));
-	glm::mat4 proj = glm::perspective(glm::radians(51.0f), (float)WINDOW_W / (float) WINDOW_H, 0.0f, 160.0f);
+	glm::mat4 proj = glm::perspective(glm::radians(51.0f), (float)WINDOW_W / (float) WINDOW_H, 2.0f, 160.0f);
 
 	//Set transformation
 	shader.Bind();
@@ -83,9 +116,13 @@ int main()
 	shader.SetUniformMatrix4f("transform.model", model);
 	
 
+
 	//Vertex Arrays
 	VertexArray vertexArray;
 	vertexArray.Bind();
+
+	
+
 
 	//Set buffer
 	VertexBuffer vertexBuffer(vertices, sizeof(vertices));
@@ -93,6 +130,13 @@ int main()
 	//Set layout
 	VertexBufferLayout layout;
 	layout.Push<float>(3);
+	layout.Push<float>(2);
+
+
+	//Textures
+	Texture texture("res/textures/container2.png");
+	texture.Bind(0);
+
 
 	//Index Buffer
 	ElementBuffer elementBuffer(indices, 6 * 6);
@@ -103,6 +147,8 @@ int main()
 
 	//Add element buffer
 	vertexArray.AddElementBuffer(elementBuffer);
+
+	
 
 
 	Renderer renderer;
@@ -116,19 +162,15 @@ int main()
 		renderer.ClearWithColor(0.3f, 0.3, 0.4f, 1.0f);
 
 		shader.Bind();
-		shader.SetUniform4f("aColor", 0.1f, std::sin(glfwGetTime()), 0.4f, 1.0f);
+		//shader.SetUniform4f("aColor", 0.1f, std::sin(glfwGetTime()), 0.4f, 1.0f);
 		
 		float angle = std::sin(glfwGetTime());
 		model = glm::rotate(model, glm::radians(0.1f * angle), glm::vec3(0.0f, 1.0f, 0.0f));
 
 		shader.SetUniformMatrix4f("transform.model", model);
 		
-		renderer.SetDrawMode(DrawMode::FILL_TWO_SIDED);
-		renderer.Draw(vertexArray, elementBuffer, shader);
+		renderer.Draw(vertexArray, shader, 36);
 
-		shader.SetUniform4f("aColor", 0.0f, 0.0f, 0.0f, 1.0f);
-		renderer.SetDrawMode(DrawMode::WIRE_TWO_SIDED);
-		renderer.Draw(vertexArray, elementBuffer, shader);
 
 		win->PollEvents();
 		win->SwapBuffers();

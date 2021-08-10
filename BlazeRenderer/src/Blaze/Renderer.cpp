@@ -2,6 +2,7 @@
 
 Renderer::Renderer()
 {
+	glEnable(GL_DEPTH_TEST);
 }
 
 Renderer::~Renderer()
@@ -10,14 +11,16 @@ Renderer::~Renderer()
 
 void Renderer::Clear()
 {
-	GLCall(glClearColor(0.0, 0.0, 0.0, 0.0));
-	GLCall(glClear(GL_COLOR_BUFFER_BIT));
+	GLCall(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
+	//GLCall(glClearColor(0.0, 0.0, 0.0, 0.0));
 }
+
 
 void Renderer::ClearWithColor(float r, float g, float b, float a)
 {
-	GLCall(glClearColor(r, g, b, a));
-	GLCall(glClear(GL_COLOR_BUFFER_BIT));
+	
+	GLCall(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
+	//GLCall(glClearColor(r, g, b, a));
 }
 
 void Renderer::Draw(const VertexArray& va, const ElementBuffer& eb, const Shader& shader)
@@ -28,6 +31,15 @@ void Renderer::Draw(const VertexArray& va, const ElementBuffer& eb, const Shader
 
 
 	GLCall(glDrawElements(GL_TRIANGLES, eb.GetCount(), GL_UNSIGNED_INT, nullptr));
+}
+
+void Renderer::Draw(const VertexArray& va, const Shader& shader, unsigned int count)
+{
+	shader.Bind();
+	va.Bind();
+
+	GLCall(glDrawArrays(GL_TRIANGLES, 0, count));
+
 }
 
 void Renderer::SetDrawMode(DrawMode drawMode)
