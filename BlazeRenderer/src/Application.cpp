@@ -1,27 +1,12 @@
 #include <iostream>
 #include <glad/glad.h>
 
-#include "Blaze/Logger.h"
-#include "Blaze/Window.h"
-#include "Blaze/Renderer.h"
-#include "Blaze/Texture.h"
+#include "Blaze.h"
 
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/type_ptr.hpp"
 
-void GLClearError() {
-	while (glGetError() != GL_NO_ERROR);
-}
-
-bool GLLogCall(const char* function, const char* file, int line) {
-	while (GLenum error = glGetError()) {
-		std::cout << "[OpenGL error]" << "(" << std::hex << error << std::dec << ")" << function << " " << file << " " << line << std::endl;
-		return false;
-	}
-
-	return true;
-}
 
 
 #define WINDOW_H 600.0f 
@@ -165,7 +150,7 @@ int main()
 		//shader.SetUniform4f("aColor", 0.1f, std::sin(glfwGetTime()), 0.4f, 1.0f);
 		
 		float angle = std::sin(glfwGetTime());
-		model = glm::rotate(model, glm::radians(0.1f * angle), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(0.1f * angle), glm::vec3(0.1f, 1.2f, 0.3f));
 
 		shader.SetUniformMatrix4f("transform.model", model);
 		
@@ -180,8 +165,3 @@ int main()
 	delete win;
 }
 
-
-void ResizeWindowCallback(GLFWwindow* window, int width, int height)
-{
-	glViewport(0, 0, width, height);
-}
