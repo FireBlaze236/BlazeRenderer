@@ -6,7 +6,7 @@
 
 #include "glm/gtc/type_ptr.hpp"
 
-Shader::Shader(std::string& shaderFilePath)
+Shader::Shader(const std::string& shaderFilePath)
 	:m_RendererID(0)
 {
 	m_Filepath = shaderFilePath;
@@ -14,6 +14,17 @@ Shader::Shader(std::string& shaderFilePath)
 	ShaderProgramSource shaderSource = ParseShader(shaderFilePath);
 
 	m_RendererID = CreateShaderProgram(shaderSource);
+}
+
+Shader::Shader(const std::string& vertexShaderPath, const std::string& fragmentShaderPath)
+	:m_RendererID(0)
+{
+	m_Filepath = "Vertex : " + vertexShaderPath + " Fragment: "+ fragmentShaderPath;
+
+	ShaderProgramSource shaderSource = LoadShader(vertexShaderPath, fragmentShaderPath);
+
+	m_RendererID = CreateShaderProgram(shaderSource);
+
 }
 
 ShaderProgramSource Shader::ParseShader(const std::string& filePath)
@@ -51,7 +62,38 @@ ShaderProgramSource Shader::ParseShader(const std::string& filePath)
 		}
 	}
 
+	file.close();
+
 	return { ss[0].str(), ss[1].str() };
+
+}
+
+ShaderProgramSource Shader::LoadShader(const std::string& vertexShaderPath, const std::string& fragmentShaderPath)
+{
+	std::string vertexSource;
+	std::string fragmentSource;
+
+	std::ifstream vertexFile(vertexShaderPath);
+	std::ifstream fragmentFile(fragmentShaderPath);
+
+	std::stringstream vss, fss;
+	std::string line;
+
+	while (std::getline(vertexFile, line))
+	{
+		vss << line << '\n';
+	}
+
+	while (std::getline(fragmentFile, line))
+	{
+		fss << line << '\n';
+	}
+
+	vertexFile.close();
+	fragmentFile.close();
+
+	return { vss.str(), fss.str() };
+
 
 }
 

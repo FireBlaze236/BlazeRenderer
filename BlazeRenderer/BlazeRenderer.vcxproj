@@ -461,6 +461,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\defaultShader.shader" />
+    <None Include="res\shaders\phongShader.shader" />
+    <None Include="res\shaders\phongVertex.glsl" />
+    <None Include="res\shaders\phongFragment.glsl" />
     <None Include="src\vendor\glm\detail\func_common.inl" />
     <None Include="src\vendor\glm\detail\func_common_simd.inl" />
     <None Include="src\vendor\glm\detail\func_exponential.inl" />

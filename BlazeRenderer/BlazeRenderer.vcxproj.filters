@@ -1343,6 +1343,9 @@
     <None Include="src\vendor\glm\gtx\wrap.inl">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="res\shaders\phongFragment.glsl" />
+    <None Include="res\shaders\phongShader.shader" />
+    <None Include="res\shaders\phongVertex.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\container2.png">

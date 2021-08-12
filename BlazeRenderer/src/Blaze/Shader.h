@@ -16,7 +16,8 @@ private:
 	std::unordered_map<std::string, unsigned int> m_UniformMap;
 
 public:
-	Shader(std::string& shaderFilePath);
+	Shader(const std::string& shaderFilePath);
+	Shader(const std::string& vertexShaderPath, const std::string& fragmentShaderPath);
 	~Shader();
 
 	void Bind() const;
@@ -24,6 +25,7 @@ public:
 
 private:
 	ShaderProgramSource ParseShader(const std::string& filePath);
+	ShaderProgramSource LoadShader(const std::string& vertexShaderPath, const std::string& fragmentShaderPath);
 	unsigned int CreateShaderProgram(const ShaderProgramSource& shaderSource);
 	unsigned int CompileShader(unsigned int type, const std::string& source);
 

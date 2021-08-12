@@ -84,8 +84,8 @@ int main()
 
 	//Shaders
 
-	std::string s = "res/shaders/defaultShader.shader";
-	Shader shader(s);
+	
+	Shader shader("res/shaders/phongVertex.glsl", "res/shaders/phongFragment.glsl");
 
 	glm::mat4 model = glm::mat4(1.0f);
 	//model = glm::rotate(model, glm::radians(20.0f), glm::vec3(0.3f, 0.3f, 0.1f));
