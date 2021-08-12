@@ -894,6 +894,9 @@
     <ClInclude Include="src\Blaze.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Blaze\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp">

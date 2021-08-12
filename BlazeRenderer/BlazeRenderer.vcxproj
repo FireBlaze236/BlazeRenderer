@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Blaze.h" />
+    <ClInclude Include="src\Blaze\Camera.h" />
     <ClInclude Include="src\Blaze\Shader.h" />
     <ClInclude Include="src\Blaze\Renderer.h" />
     <ClInclude Include="src\Blaze\ElementBuffer.h" />

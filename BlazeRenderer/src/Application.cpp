@@ -148,11 +148,18 @@ int main()
 
 		shader.Bind();
 		//shader.SetUniform4f("aColor", 0.1f, std::sin(glfwGetTime()), 0.4f, 1.0f);
+
+		win->ProcessInput();
+
+		view = win->camera.GetViewMatrix();
+
 		
 		float angle = std::sin(glfwGetTime());
 		model = glm::rotate(model, glm::radians(0.1f * angle), glm::vec3(0.1f, 1.2f, 0.3f));
 
+		
 		shader.SetUniformMatrix4f("transform.model", model);
+		shader.SetUniformMatrix4f("transform.view", view);
 		
 		renderer.Draw(vertexArray, shader, 36);
 
