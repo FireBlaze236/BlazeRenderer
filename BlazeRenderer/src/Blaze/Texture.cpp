@@ -44,6 +44,8 @@ void Texture::LoadTexture(const std::string& file)
 
 	Bind();
 
+	stbi_set_flip_vertically_on_load(1);
+
 	unsigned char* data;
 	int width, height, nchannel;
 	data = stbi_load("res/textures/container2.png", &width, &height, &nchannel, 4);
