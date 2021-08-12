@@ -12,15 +12,15 @@ Renderer::~Renderer()
 void Renderer::Clear()
 {
 	GLCall(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
-	//GLCall(glClearColor(0.0, 0.0, 0.0, 0.0));
+	GLCall(glClearColor(0.0, 0.0, 0.0, 0.0));
 }
 
 
 void Renderer::ClearWithColor(float r, float g, float b, float a)
 {
-	
+	GLCall(glClearColor(r, g, b, a));
 	GLCall(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
-	//GLCall(glClearColor(r, g, b, a));
+	
 }
 
 void Renderer::Draw(const VertexArray& va, const ElementBuffer& eb, const Shader& shader)

@@ -92,7 +92,7 @@ int main()
 
 	glm::mat4 view = glm::mat4(1.0f);
 	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -5.0f));
-	glm::mat4 proj = glm::perspective(glm::radians(51.0f), (float)WINDOW_W / (float) WINDOW_H, 2.0f, 160.0f);
+	glm::mat4 proj = glm::perspective(glm::radians(51.0f), (float)WINDOW_W / (float) WINDOW_H, 0.1f, 160.0f);
 
 	//Set transformation
 	shader.Bind();
