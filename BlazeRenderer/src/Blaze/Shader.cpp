@@ -37,6 +37,13 @@ ShaderProgramSource Shader::ParseShader(const std::string& filePath)
 	};
 
 	std::ifstream file(filePath);
+
+	if (!file.is_open())
+	{
+		LOG("Shader File not found!"); ASSERT(false);
+		m_RendererID = 0;
+		return {"", ""};
+	}
 	
 	std::string line;
 	std::stringstream ss[2];
@@ -75,6 +82,13 @@ ShaderProgramSource Shader::LoadShader(const std::string& vertexShaderPath, cons
 
 	std::ifstream vertexFile(vertexShaderPath);
 	std::ifstream fragmentFile(fragmentShaderPath);
+
+	if (!vertexFile.is_open() && !fragmentFile.is_open())
+	{
+		LOG("Shader File not found!"); ASSERT(false);
+		m_RendererID = 0;
+		return { "", "" };
+	}
 
 	std::stringstream vss, fss;
 	std::string line;

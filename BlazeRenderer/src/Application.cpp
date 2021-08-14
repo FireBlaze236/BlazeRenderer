@@ -19,47 +19,47 @@ int main()
 	gladLoadGL();
 	
 	float vertices[] = {
-		 -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-	 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+	 0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+	 0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+	 0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+	-0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
 
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-	-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	-0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+	 0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+	 0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+	 0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+	-0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+	-0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
 
-	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	-0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+	-0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+	-0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+	-0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+	-0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+	-0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
 
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	 0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+	 0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+	 0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+	 0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+	 0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+	 0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
 
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+	 0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+	 0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+	 0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+	-0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
 
-	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+	-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+	 0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+	 0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+	 0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+	-0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+	-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
 	};
 
 	unsigned int indices[] = {
@@ -85,7 +85,8 @@ int main()
 	//Shaders
 
 	
-	Shader shader("res/shaders/phongVertex.glsl", "res/shaders/phongFragment.glsl");
+	Shader shader("res/shaders/phongVertex.glsl", "res/shaders/phongFragmentBasic.glsl");
+	Shader lampShader("res/shaders/lampShader.shader");
 
 	glm::mat4 model = glm::mat4(1.0f);
 	//model = glm::rotate(model, glm::radians(20.0f), glm::vec3(0.3f, 0.3f, 0.1f));
@@ -99,15 +100,21 @@ int main()
 	shader.SetUniformMatrix4f("transform.projection", proj);
 	shader.SetUniformMatrix4f("transform.view", view);
 	shader.SetUniformMatrix4f("transform.model", model);
-	
 
+	//Lighting
+	shader.SetUniform3f("objectColor", 0.3f, 0.4f, 0.3f);
+	shader.SetUniform3f("lightColor", 1.0f, 1.0f, 1.0f);
+	
+	//LightLamp
+	glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
+	lampShader.Bind();
+	lampShader.SetUniformMatrix4f("transform.projection", proj);
+	lampShader.SetUniformMatrix4f("transform.view", view);
+	lampShader.SetUniformMatrix4f("transform.model", model);
 
 	//Vertex Arrays
 	VertexArray vertexArray;
 	vertexArray.Bind();
-
-	
-
 
 	//Set buffer
 	VertexBuffer vertexBuffer(vertices, sizeof(vertices));
@@ -115,7 +122,8 @@ int main()
 	//Set layout
 	VertexBufferLayout layout;
 	layout.Push<float>(3);
-	layout.Push<float>(2);
+	layout.Push<float>(3);
+	
 
 
 	//Textures
@@ -146,22 +154,44 @@ int main()
 	{
 		renderer.ClearWithColor(0.3f, 0.3, 0.4f, 1.0f);
 
-		shader.Bind();
+		//shader.Bind();
 		//shader.SetUniform4f("aColor", 0.1f, std::sin(glfwGetTime()), 0.4f, 1.0f);
+
+		//lampShader.Bind();
 
 		win->ProcessInput();
 
 		view = win->camera.GetViewMatrix();
 
-		
+
+		// Draw the light
+		glm::mat4 lampModel = glm::mat4(1.0f);
+		lampModel = glm::translate(lampModel, lightPos);
+		lampModel = glm::scale(lampModel, glm::vec3(0.2f));
+		lampShader.Bind();
+		lampShader.SetUniformMatrix4f("transform.model", lampModel);
+		lampShader.SetUniformMatrix4f("transform.view", view);
+
+		renderer.Draw(vertexArray, lampShader, 36);
+
+		//Draw the box
+
 		float angle = std::sin(glfwGetTime());
 		model = glm::rotate(model, glm::radians(0.1f * angle), glm::vec3(0.1f, 1.2f, 0.3f));
 
-		
+		shader.Bind();
 		shader.SetUniformMatrix4f("transform.model", model);
 		shader.SetUniformMatrix4f("transform.view", view);
 		
+
+		shader.SetUniform3f("lightPos", lightPos.x, lightPos.y, lightPos.z);
+
 		renderer.Draw(vertexArray, shader, 36);
+
+
+
+
+		
 
 
 		win->PollEvents();
