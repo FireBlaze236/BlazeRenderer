@@ -48,7 +48,7 @@ void Texture::LoadTexture(const std::string& file)
 
 	unsigned char* data;
 	int width, height, nchannel;
-	data = stbi_load("res/textures/container2.png", &width, &height, &nchannel, 4);
+	data = stbi_load(file.c_str(), &width, &height, &nchannel, 4);
 
 	if (!data)
 	{

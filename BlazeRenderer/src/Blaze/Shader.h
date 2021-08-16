@@ -38,6 +38,9 @@ public: //Uniform functions
 	void SetUniform3f(const std::string& name, float v0, float v1, float v2);
 	void SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3);
 
+	//Ints
+	void SetUniform1i(const std::string& name, int v0);
+
 	//Float Vectors
 	//void SetUniform2fv(const std::string& name, float* fv);
 	//void SetUniform3fv(const std::string& name, float* fv);

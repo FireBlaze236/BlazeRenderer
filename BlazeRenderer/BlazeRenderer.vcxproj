@@ -466,6 +466,7 @@
     <None Include="res\shaders\phongShaderBasic.shader" />
     <None Include="res\shaders\phongVertex.glsl" />
     <None Include="res\shaders\phongFragmentBasic.glsl" />
+    <None Include="res\shaders\phongVertexTexture.glsl" />
     <None Include="src\vendor\glm\detail\func_common.inl" />
     <None Include="src\vendor\glm\detail\func_common_simd.inl" />
     <None Include="src\vendor\glm\detail\func_exponential.inl" />
