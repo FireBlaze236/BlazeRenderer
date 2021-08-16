@@ -1347,6 +1347,7 @@
     <None Include="res\shaders\phongShaderBasic.shader" />
     <None Include="res\shaders\phongVertex.glsl" />
     <None Include="res\shaders\lampShader.shader" />
+    <None Include="res\shaders\phongFragmentTexture.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\container2.png">

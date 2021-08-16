@@ -29,7 +29,6 @@ public:
 	void PollEvents();
 	void SwapBuffers();
 
-
 	void AttachResizeCallback(GLFWwindowsizefun func);
 	void AttachMouseCallback(GLFWcursorposfun func);
 	void DetachMouseCallback();

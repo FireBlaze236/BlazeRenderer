@@ -462,6 +462,7 @@
   <ItemGroup>
     <None Include="res\shaders\defaultShader.shader" />
     <None Include="res\shaders\lampShader.shader" />
+    <None Include="res\shaders\phongFragmentTexture.glsl" />
     <None Include="res\shaders\phongShaderBasic.shader" />
     <None Include="res\shaders\phongVertex.glsl" />
     <None Include="res\shaders\phongFragmentBasic.glsl" />

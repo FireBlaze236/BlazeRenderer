@@ -101,9 +101,15 @@ int main()
 	shader.SetUniformMatrix4f("transform.view", view);
 	shader.SetUniformMatrix4f("transform.model", model);
 
-	//Lighting
-	shader.SetUniform3f("objectColor", 0.3f, 0.4f, 0.3f);
-	shader.SetUniform3f("lightColor", 1.0f, 1.0f, 1.0f);
+	//Set material properties
+	shader.SetUniform3f("material.ambient", 1.0f, 0.5f, 0.31f);
+	shader.SetUniform3f("material.diffuse", 1.0f, 0.5f, 0.31f);
+	shader.SetUniform3f("material.specular", 0.5f, 0.5f, 0.5f);
+	shader.SetUniform1f("material.shininess", 32.0f);
+	//Lighting properties
+	shader.SetUniform3f("light.ambient", 0.2f, 0.2f, 0.2f);
+	shader.SetUniform3f("light.diffuse", 0.5f, 0.5f, 0.5f);
+	shader.SetUniform3f("light.specular", 1.0f, 1.0f, 1.0f);
 	
 	//LightLamp
 	glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
@@ -163,6 +169,11 @@ int main()
 
 		view = win->camera.GetViewMatrix();
 
+		//Move the light around in a circle
+		float rad = 5.0f;
+		float xPos = std::sin(glfwGetTime()) * rad;
+		float zPos = std::cos(glfwGetTime()) * rad;
+		//lightPos = glm::vec3(xPos, lightPos.y, zPos);
 
 		// Draw the light
 		glm::mat4 lampModel = glm::mat4(1.0f);
@@ -177,14 +188,15 @@ int main()
 		//Draw the box
 
 		float angle = std::sin(glfwGetTime());
-		model = glm::rotate(model, glm::radians(0.1f * angle), glm::vec3(0.1f, 1.2f, 0.3f));
+		//model = glm::rotate(model, glm::radians(0.001f * angle), glm::vec3(0.1f, 1.2f, 0.3f));
 
 		shader.Bind();
 		shader.SetUniformMatrix4f("transform.model", model);
 		shader.SetUniformMatrix4f("transform.view", view);
 		
-
-		shader.SetUniform3f("lightPos", lightPos.x, lightPos.y, lightPos.z);
+		glm::vec3 cameraPos = win->camera.GetCameraPosition();
+		shader.SetUniform3f("viewPos", cameraPos.x, cameraPos.y, cameraPos.z);
+		shader.SetUniform3f("light.position", lightPos.x, lightPos.y, lightPos.z);
 
 		renderer.Draw(vertexArray, shader, 36);
 
