@@ -14,7 +14,7 @@
 
 int main()
 {
-	Window* win = new Window(WINDOW_W, WINDOW_H, "BlazeRenderer", false, true, 3, 3);
+	Window win = Window(WINDOW_W, WINDOW_H, "BlazeRenderer", false, true, 3, 3);
 
 	gladLoadGL();
 	
@@ -201,7 +201,7 @@ int main()
 	//renderer.SetDrawMode(DrawMode::WIRE_TWO_SIDED);
 	
 
-	while (!win->isClosing())
+	while (!win.isClosing())
 	{
 		renderer.ClearWithColor(0.3f, 0.3, 0.4f, 1.0f);
 
@@ -210,9 +210,9 @@ int main()
 
 		//lampShader.Bind();
 
-		win->ProcessInput();
+		win.ProcessInput();
 
-		view = win->camera.GetViewMatrix();
+		view = win.camera.GetViewMatrix();
 
 		//Move the light around in a circle
 		float rad = 5.0f;
@@ -255,7 +255,7 @@ int main()
 		shader.SetUniform1i("material.specular", 1);
 
 		
-		glm::vec3 cameraPos = win->camera.GetCameraPosition();
+		glm::vec3 cameraPos = win.camera.GetCameraPosition();
 		shader.SetUniform3f("viewPos", cameraPos.x, cameraPos.y, cameraPos.z);
 		//shader.SetUniform3f("light.position", lightPos.x, lightPos.y, lightPos.z);
 
@@ -278,13 +278,10 @@ int main()
 		
 
 
-		win->PollEvents();
-		win->SwapBuffers();
+		win.PollEvents();
+		win.SwapBuffers();
 	}
 
-	//CLEAN UP
-	delete win;
 
-	glfwTerminate();
 }
 
