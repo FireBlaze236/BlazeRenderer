@@ -135,10 +135,8 @@ int main()
 	//Textures
 	
 	Texture diffuseTexture("res/textures/container2.png");
-	//diffuseTexture.Bind(0);
-
 	Texture specularTexture("res/textures/container2_specular.png");
-	//specularTexture.Bind(1);
+	Texture emissionTexture("res/textures/matrix.jpg");
 
 
 	//Index Buffer
@@ -201,8 +199,11 @@ int main()
 		//Set Textures
 		diffuseTexture.Bind(0);
 		specularTexture.Bind(1);
+		emissionTexture.Bind(2);
 		shader.SetUniform1i("material.diffuse", 0);
 		shader.SetUniform1i("material.specular", 1);
+		shader.SetUniform1i("material.emission", 2);
+		shader.SetUniform1f("material.emissionIntensity", 1.0f);
 
 		
 		glm::vec3 cameraPos = win->camera.GetCameraPosition();
