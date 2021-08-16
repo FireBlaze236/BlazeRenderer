@@ -15,8 +15,6 @@ struct Transform {
 	mat4 projection;
 };
 
-
-
 uniform Transform transform;
 
 
@@ -26,6 +24,5 @@ void main()
 	gl_Position = transform.projection *  transform.view * transform.model * vec4(aPos, 1.0);
 	fragPos = vec3(transform.model * vec4(aPos, 1.0));
 	normal = mat3(transpose(inverse(transform.model))) * aNormal;
-
 	texCoords = aTexCoords;
 }
