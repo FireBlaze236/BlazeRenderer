@@ -2,7 +2,7 @@
 #include <iostream>
 
 #ifdef _DEBUG
-	#define ASSERT(x) if(!(x)) __debugbreak()
+	#define ASSERT(x) if(!!(x)) {} else __debugbreak()
 	#define LOG(x) std::cout << (x) << std::endl; 
 
 	#define GLCall(x) GLClearError();\
